@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+
+  "name": "Markdown Render",
+  "description": "View Github style Markdown file (.md) rendered",
+  "version": "0.0.1",
+
+  "permissions": [
+    "tabs", "<all_urls>", "https://api.github.com/"
+  ],
+  "icons": {
+          "16": "mdr_icon_16.png",
+          "48": "mdr_icon_48.png",
+          "64": "mdr_icon_64.png",
+          "128": "mdr_icon_128.png"
+  },
+  "content_scripts": [ {
+    "matches": ["file://*/*.md", 
+                "http://localhost/*/*.md", 
+                "https://localhost/*/*.md", 
+                "http://127.0.0.1/*/*.md", 
+                "https://127.0.0.1/*/*.md"],
+    "js": ["mdrender.js"]
+  } ],
+  "web_accessible_resources": [
+    "git-markdown.css"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "author": "palanik"
+}
